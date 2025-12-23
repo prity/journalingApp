@@ -1,13 +1,8 @@
-package net.engineeringdigest.journalApp;
+package net.engineeringdigest.journalApp.service;
 
-import lombok.experimental.Accessors;
 import net.engineeringdigest.journalApp.entity.User;
-import net.engineeringdigest.journalApp.service.UserService;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +18,7 @@ public class UserServiceTests {
     @Autowired
     UserService userService;
 
-    @Disabled
+
     @ParameterizedTest
     @ValueSource(strings={ "hiuhbkj","sahil","dileep","mohan" })
     public void findByUsername(String name)

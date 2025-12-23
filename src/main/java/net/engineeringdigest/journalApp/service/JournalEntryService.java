@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -25,7 +26,6 @@ public class JournalEntryService {
     @Autowired
     private JournalEntryRepository journalEntryRepository;
 
-   // private final static Logger logger= LoggerFactory.getLogger(JournalEntryService.class);
 
     @Autowired
     private UserService userService;
@@ -33,7 +33,7 @@ public class JournalEntryService {
     @Transactional
     public void saveEntryWithUsername(String username, JournalEntry entry) {
         try {
-
+            entry.setDate(LocalDateTime.now().minusDays(1));
             JournalEntry saved = saveEntry(entry);
             Optional<User> user= userService.getUserByUsername(username);
             user.get().getJournalentries().add(saved);
